@@ -152,7 +152,7 @@ function Feeds({feedPost,context}) {
 
             <div className='d-flex align-items-center mb-3'>
 
-               <Link to={`/profile/${feedPost.userId}`}> <img src={userPfp?`${ServerURL}/upload/${userPfp.profile_pic}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFgwygkIBAbmTWG73mmB3A54s0UOWwqItsaA&usqp=CAU"} alt="profile" className='rounded-circle' width={50} height={50}  style={{objectFit:'cover',objectPosition:'center'}}/></Link>
+               <Link to={`/profile/${feedPost.userId}`}> <img src={userPfp.profile_pic?`${ServerURL}/upload/${userPfp.profile_pic}`:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFgwygkIBAbmTWG73mmB3A54s0UOWwqItsaA&usqp=CAU"} alt="profile" className='rounded-circle' width={50} height={50}  style={{objectFit:'cover',objectPosition:'center'}}/></Link>
 
               <div className='d-flex justify-content-between' style={{width:'100%'}}>
                     <div className='ms-3'>
