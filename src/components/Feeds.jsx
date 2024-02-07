@@ -156,7 +156,7 @@ function Feeds({feedPost,context}) {
 
               <div className='d-flex justify-content-between' style={{width:'100%'}}>
                     <div className='ms-3'>
-                        <h4 className='fw-bold mb-0'><Link to={`/profile/${feedPost.userId}`} className='text-decoration-none text-dark text-capitalize '>{feedPost.userName}</Link></h4>
+                        <h4 className='fw-bold mb-0'><Link to={`/profile/${feedPost.userId}`} className='text-decoration-none text-dark text-capitalize '>{userPfp.username}</Link></h4>
                         <span className='text-muted' style={{ fontSize: '12px' }}>{time}</span>
                     </div>
                      <div>
