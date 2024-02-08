@@ -69,7 +69,9 @@ function Posts() {
               Swal.fire({
                 title: "Success",
                 text: "Post added successfully",
-                icon: "success"
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000
               });
               console.log(result.data);
               setIsUpdatePost(true)
@@ -95,7 +97,9 @@ function Posts() {
               Swal.fire({
                 title: "Success",
                 text: "Post added successfully",
-                icon: "success"
+                icon: "success",
+                showConfirmButton: false,
+               timer: 2000
               });
               console.log(result.data);
               setIsUpdatePost(true)

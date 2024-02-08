@@ -25,7 +25,7 @@ function Home() {
   
   useEffect(()=>{
     getAllPosts()
-  },[isUpdatePost])
+  },[isUpdatePost,isDeletePost])
 
   
 

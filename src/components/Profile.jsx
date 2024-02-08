@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { ProfileViewContext, postUpdateContext } from '../contextShare/ProfileContext'
+import { ProfileViewContext, postDeleteContext, postUpdateContext } from '../contextShare/ProfileContext'
 import { getAllLikedPostApi, getAllPostsApi, getUserDetailsApi } from '../services/allAPI'
 import { ServerURL } from '../services/baseUrl'
 import Feeds from './Feeds'
@@ -16,6 +16,7 @@ function Profile() {
    const [userLikes,setUserLikes]=useState([])
    const{isLogOUt,setIsLogOut}=useContext(ProfileViewContext)
    const{isUpdatePost,setIsUpdatePost}=useContext(postUpdateContext)
+   const{isDeletePost,setIsDeletePost}=useContext(postDeleteContext)
 
    const {id}=useParams()
    const navigate = useNavigate()
@@ -62,7 +63,7 @@ function Profile() {
     checkProfileUser()
     getAllPosts()
     getAllLikedPost()
-  },[id,isUpdatePost])
+  },[id,isUpdatePost,isDeletePost])
 
   const handleLogOut = ()=>{
     sessionStorage.removeItem('token')

@@ -45,7 +45,7 @@ function Authentication({isregister}) {
 
         if (isUsernameValid && isEmailValid && isPasswordValid) {
           const res = await userRegisterApi(userDetails)
-          console.log(res);
+          // console.log(res);
           if(res.status==200){
             Swal.fire({
               title: "success!",
@@ -105,7 +105,7 @@ function Authentication({isregister}) {
 
         if ( isEmailValid && isPasswordValid) {
           const res = await loginUserApi(userDetails)
-          console.log(res);
+          // console.log(res);
           if(res.status==200){
               sessionStorage.setItem("token",res.data.token)
               sessionStorage.setItem("CurrentUser",JSON.stringify(res.data.Login))
@@ -199,7 +199,6 @@ function Authentication({isregister}) {
              </button>}
              {register&&
              <p className='mt-3 '>Already a user?<Link to={'/'} className='text-decoration-none' >Login</Link></p>
-              // : <p className='mt-3 '><Link to={'/forgotpass'} className='text-decoration-none' >Forgot Password ?</Link></p>
               }
             </div>
 

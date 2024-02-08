@@ -45,15 +45,22 @@ function Feeds({feedPost,context}) {
         PostId:feedPost._id,
         LikedUser:likeduser,
         })
-        setLikeBtn()
     },[feedPost , context ,isInterestBtn])
 
+  
 
     const handleInterest= async()=>{
    
       try{
        const result = await likePostApi(interestData)
-      // console.log(result);
+        if(result.status==200){
+          Swal.fire({
+            text: "Your interest has been marked",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000
+          });
+        }
       }catch(error){
       console.log(error);
       }
@@ -69,7 +76,14 @@ function Feeds({feedPost,context}) {
         try {
           const result = await removeLikedPostApi({ LikedUser, postId });
           setIsUpdatePost((prevCounter) => prevCounter + 1)
-          // console.log(result);
+          if(result.status==200){
+            Swal.fire({
+              text: "Your interest has been removed",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 2000
+            });
+          }
         } catch (error) {
           console.error('Error removing like:', error);
         }
@@ -79,23 +93,7 @@ function Feeds({feedPost,context}) {
     };
     
 
-   const setLikeBtn = async()=>{
-    const CurrentUser = JSON.parse(sessionStorage.getItem('CurrentUser'))._id
-    
-    const result = await getAllLikedPostApi()
-
-    const likedPost = result.data.find((item) => item.LikedUser === CurrentUser && item.PostId === feedPost._id);
-   
-  if (context === "userPosts") {
-    // For user's posts
-    setIsInterestBtn(likedPost ? 1 : 0);
-    setIsUpdatePost((prevCounter) => prevCounter + 1)
-  } else if (context === "likedPosts") {
-    // For liked posts
-    setIsInterestBtn(1); 
-    setIsUpdatePost((prevCounter) => prevCounter + 1)
-  }
-   }
+  
 
     const handleDelete = async()=>{
         const postId = feedPost._id
@@ -173,12 +171,12 @@ function Feeds({feedPost,context}) {
             </div>
             <div className='d-flex justify-content-between mt-2 '>
                 <div>
-                  {isInterestBtn==0?<button className='btn   me-2' onClick={handleInterest}>
-                    <i className="fa-regular fa-lightbulb fa-lg me-1 "></i>interest
-                    </button>:
-                    <button className='btn me-2' onClick={handleRemoveInterest}>
-                    <i className="fa-solid fa-lightbulb fa-lg me-1 "></i>interest
-                    </button>}
+                    <button className='btn btn-light  me-2' onClick={handleInterest}>
+                     <i class="fa-solid fa-thumbs-up"></i>
+                    </button>
+                    <button className='btn me-2 btn-light' onClick={handleRemoveInterest}>
+                    <i class="fa-solid fa-thumbs-down"></i>
+                    </button>
                 </div>
                 <div>
                     <button className='btn btn-light 'onClick={() => window.location.href = `mailto:${userPfp.email||''}`}>
